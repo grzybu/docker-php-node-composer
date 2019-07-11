@@ -10,13 +10,17 @@ RUN apt-get update && apt-get install -y \
     git \
     zip \
     unzip \
-    zlib1g-dev \
+    libzip-dev \
     python-pip \
-    python2.7 \
     python2.7-dev \
     groff-base \
     build-essential \
+    libicu-dev \
     --no-install-recommends
+
+RUN apt-get install -y locales
+
+RUN docker-php-ext-install mbstring
 
 # Install zip
 RUN docker-php-ext-install zip
