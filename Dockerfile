@@ -8,12 +8,20 @@ RUN apt-get update && apt-get install -y \
     curl \
     gnupg \
     git \
+    zip \
     python-pip \
     python2.7 \
     python2.7-dev \
     groff-base \
     build-essential \
     --no-install-recommends
+
+# Install zip
+RUN docker-php-ext-install zip
+
+# Install ext-intl
+RUN docker-php-ext-configure intl
+RUN docker-php-ext-install intl
 
 # Install aws cli
 RUN pip install --upgrade pip setuptools
