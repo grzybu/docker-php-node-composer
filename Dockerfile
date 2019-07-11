@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     git \
     zip \
+    zlib1g-dev \
     python-pip \
     python2.7 \
     python2.7-dev \
