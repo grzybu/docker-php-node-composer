@@ -33,6 +33,13 @@ RUN docker-php-ext-install intl
 RUN pip install --upgrade pip setuptools
 RUN pip install --upgrade awscli
 
+# Install opcache
+RUN docker-php-ext-install opcache
+
+# Install APCu
+RUN pecl install apcu
+RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
+
 # Get Chrome sources
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
