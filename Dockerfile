@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     groff-base \
     build-essential \
     libicu-dev \
+    apt-utils \
     --no-install-recommends
 
 RUN apt-get install -y locales
@@ -39,6 +40,10 @@ RUN docker-php-ext-install opcache
 # Install APCu
 RUN pecl install apcu
 RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
+
+# Install Xdebug
+RUN pecl install xdebug
+RUN echo "extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
 
 # Get Chrome sources
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
