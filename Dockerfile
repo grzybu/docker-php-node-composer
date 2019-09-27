@@ -43,7 +43,7 @@ RUN echo "extension=apcu.so" > /usr/local/etc/php/conf.d/apcu.ini
 
 # Install Xdebug
 RUN pecl install xdebug
-RUN echo "extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini
+RUN docker-php-ext-enable xdebug
 
 # Get Chrome sources
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - \
